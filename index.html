@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TODO App</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div class="divTitle">
+            <h1 class="title">TODO!</h1>
+        </div>
+        <div class="divList">
+            <ul class = "entries" id = "jsEntries">
+                <li class="entry">First entry</li>
+            </ul>
+        </div>
+        <div class="divAddNewTask">
+            <button class="addNewTaskButton" type="submit" id="jsButton">Add new task</button>
+            <input type = "text" id="newTask" name="task" placeholder="New task here:">
+            <script>
+                const field = document.getElementById("newTask");
+                field.style.display = "none";
+                field.addEventListener("keypress", function(event){
+                    if(event.which == 13){
+                        const ul = document.getElementById("jsEntries");
+                        const li = document.createElement("li");
+                        li.appendChild(document.createTextNode(field.value));
+                        ul.appendChild(li);
+                        field.value = "";
+                        field.style.display = "none";
+                        btn.style.display = "inline";
+                    }
+                })
+                const btn = document.getElementById("jsButton");
+                btn.addEventListener("click", function(){
+                    btn.style.display = "none";
+                    field.style.display = "inline";
+                    field.focus();
+                });
+            </script>
+        </div>
+    </body>  
+</html>
